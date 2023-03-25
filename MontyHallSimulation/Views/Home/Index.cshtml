@@ -1,0 +1,68 @@
+﻿@model MontyHallSimulation.Models.MontyHallResponseModel;
+@{
+    ViewData["Title"] = "Monty Hall Problem";
+}
+
+<div class="row top-100" style="margin-top:100px;">
+    <div>
+        <h4>
+            Welcome to Monty Hall Problem
+        </h4>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="container">
+    <div class="card-body col-md-6">
+        <form class="form-horizontal" method="post" asp-controller="Home" asp-action="Index">
+            <div class="card-body">
+                <div class="form-group">
+                    <label class="control-label col-sm-6" asp-for="NoOfSimulation">Number of simulation:</label>
+                    <div class="col-sm-6">
+                        <input type="number" class="form-control" asp-for="NoOfSimulation" placeholder="Number of simulation">
+                        @Html.ValidationMessageFor(m => m.NoOfSimulation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <input type="submit" class="btn btn-primary" value="Start">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-body col-md-12">
+        @if (Model.IsResult == true)
+        {
+            <div class="card-body">
+                <h4> Result</h4>
+                <div class="form-group">
+                    <label class="control-label col-sm-6">Number of simulation:</label>
+                    <div class="col-sm-6">
+                        <strong><label class="control-label col-sm-6">@Model.NoOfSimulation</label></strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-6">Number of Wins:</label>
+                    <div class="col-sm-6">
+                        <strong><label class="control-label alert-success col-sm-6">@Model.Win</label></strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-6">Number of Loss:</label>
+                    <div class="col-sm-6">
+                        <strong><label class="control-label col-sm-6 alert-danger">@Model.Loss</label></strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-6">Impression:</label>
+                    <div class="col-sm-12">
+                        <strong><label class="control-label col-sm-6 alert-success">@Model.Impression</label></strong>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
